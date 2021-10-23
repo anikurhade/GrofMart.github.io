@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Other Payment Modes </title>
+	<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.2/cosmo/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+<style >
+	#maincont{
+		height: 100vh;
+		width: 100%;
+		background-color: #fc9842;
+		background-image: linear-gradient(315deg, #fc9842 0%, #fe5f75 74%);     
+		background-repeat: no-repeat;
+	}
+</style>
+</head>
+<body>
+	<div id="maincont">
+	<div class="container py-5">
+		 <!-- End -->
+		<div class="row">
+			<div class="col-lg-6 mx-auto">
+				<div class="card ">
+					<div class="card-header">
+						<div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
+							<!-- Credit card form tabs -->
+							<ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
+								<li class="nav-item"> <a data-toggle="pill" href="#gpay" class="nav-link active "> <i class="fab fa-google-pay mr-2"></i> Google Pay </a> </li>
+								<li class="nav-item"> <a data-toggle="pill" href="#cod" class="nav-link "> <i class="fas fa-money-bill-alt mr-2"></i> CASH On Delivery</a> </li>
+								<li class="nav-item"> <a data-toggle="pill" href="#net-banking" class="nav-link "> <i class="fas fa-mobile-alt mr-2"></i> Net Banking </a> </li>
+							</ul>
+						</div>
+							<!-- End -->
+						<!-- Credit card form content -->
+						<div class="tab-content">
+							<!-- credit card info-->
+							<div id="gpay" class="tab-pane fade show active pt-3">
+								<form role="form">
+									<div class="form-group"> <label for="upi">
+											<h6> Your UPI ID</h6>
+										</label> <input type="text" id="upi" placeholder="Your UPI ID" required class="form-control "> </div>
+									
+									<div class="card-footer"> <button type="button" onclick="gpay()" class="subscribe btn btn-primary btn-block shadow-sm"> Confirm Payment </button>
+								</form>
+							</div>
+							<p class="text-muted">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
+
+						</div> <!-- End -->
+						<!-- Paypal info -->
+						<div id="cod" class="tab-pane fade pt-3">
+							<h6 class="pb-2"> Delivery Code :- </h6> <h6 id="dcode"></h6>
+							<h6 class="pb-2">Enter The Delivery Code :-</h6>
+							
+							<div class="form-group "> <input type="text"  id="udcode" placeholder="Delivery Code Given Above"  required class="form-control"></div>
+							<p> <button type="button" class="btn btn-primary "onclick="onpay()"><i class="fas fa-money-bill-alt mr-2"></i> Pay On Delivery</button> </p>
+							<p class="text-muted"> Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
+						</div> <!-- End -->
+						<!-- bank transfer info -->
+						<div id="net-banking" class="tab-pane fade pt-3">
+							<div class="form-group "> <label for="Select Your Bank">
+									<h6>Select your Bank</h6>
+								</label> <select class="form-control" id="ccmonth">
+									<option value="" selected disabled>--Please select your Bank--</option>
+									 <option value="1">ALLAHABAD BANK </option>
+									<option value="2">ANDHRA BANK</option>
+									<option value="3">AXIS BANK</option>
+									<option value="29">STATE BANK OF INDIA</option>
+									<option value="4">BANK OF BARODA</option>
+									<option value="29">UCO BANK</option>
+									<option value="29">UNION BANK OF INDIA</option>
+									<option value="5">BANK OF INDIA</option>
+									<option value="20">BANDHAN BANK LIMITED</option>
+									<option value="7">CANARA BANK</option>
+									<option value="32">GRAMIN VIKASH BANK</option>
+									<option value="8">CORPORATION BANK</option>
+									<option value="9">INDIAN BANK</option>
+									<option value="10">INDIAN OVERSEAS BANK</option>
+									<option value="11">ORIENTAL BANK OF COMMERCE</option>
+									<option value="12">PUNJAB AND SIND BANK</option>
+									<option value="13">PUNJAB NATIONAL BANK</option>
+									<option value="14">RESERVE BANK OF INDIA</option>
+									<option value="15">SOUTH INDIAN BANK</option>
+									<option value="16">UNITED BANK OF INDIA</option>
+									<option value="17">CENTRAL BANK OF INDIA</option>
+									<option value="18">VIJAYA BANK</option>
+									<option value="19">DENA BANK</option>
+									<option value="21">BHARATIYA MAHILA BANK LIMITED</option>
+									<option value="22">FEDERAL BANK LTD </option>
+									<option value="23">HDFC BANK LTD</option>
+									<option value="24">ICICI BANK LTD</option>
+									<option value="25">IDBI BANK LTD</option>
+									<option value="66">PAYTM BANK</option>
+									<option value="29">FINO PAYMENT BANK</option>
+									<option value="26">INDUSIND BANK LTD</option>
+									<option value="27">KARNATAKA BANK LTD</option>
+									<option value="28">KOTAK MAHINDRA BANK</option>
+									<option value="30">YES BANK LTD</option>
+									<option value="31">SYNDICATE BANK</option>
+									<option value="5">BANK OF INDIA</option>
+									<option value="6">BANK OF MAHARASHTRA</option>
+								</select> </div>
+							<div class="form-group">
+								<p> <button type="button" class="btn btn-primary " onclick="internetban()"><i class="fas fa-mobile-alt mr-2"></i> Proceed Payment</button> </p>
+							</div>
+							<p class="text-muted">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
+						</div> <!-- End -->
+						<!-- End --> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js"></script>
+
+</html>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+	
+	var oid=Math.floor(Math.random() * 99999) + 10000;
+	const fin=oid;
+	document.getElementById("dcode").innerHTML=fin;
+	function gpay()
+	{
+		var result = /^[\w.-]+@[\w.-]+$/;
+		var check=document.getElementById("upi").value;
+		if (check.match(result)) {
+			swal("Payment Sucessful \n We Will Delivery Your Code", {
+               icon: "success",
+               })
+               .then((value) => {
+                                   location.href='mainstart.html';
+                               });
+		}
+		else
+		{
+			swal("Error Occurred \n Wrong UPI Id Or UPI Id Not Found  ", {
+               icon: "error",
+               })
+               .then((value) => {
+                                  
+                               });
+		}
+	}
+	function internetban()
+	{
+		var check=document.getElementById("ccmonth").value;
+		if(check=="")
+		{  
+			swal("Error Occurred \n Select The Bank ", {
+               icon: "error",
+               })
+               .then((value) => {
+                                  
+                               });
+
+		}
+		else
+		{
+			swal("Currently Our Net Banking Service Is Closed !! \n\n            Try Other Payment Modes \n        We Are Sorry For The Inconvinece ", {
+               icon: "warning",
+               })
+               .then((value) => {
+                                  
+                               });
+		}
+}
+	function onpay(){
+	var check=document.getElementById("udcode").value;
+	if(check==0)
+	{
+		
+		swal("Error Occurred \n Enter The Delivery Code", {
+               icon: "error",
+               })
+               .then((value) => {
+                                  
+                               });
+	}
+	else if(check==fin)
+	{
+		swal("Payment Sucessful \n We Will Delivery Your Code", {
+               icon: "success",
+               })
+               .then((value) => {
+                                   location.href='mainstart.html';
+                               });
+	}
+	else
+	{
+		
+		swal("Error Occurred \n Invalid Data Entered", {
+               icon: "error",
+               })
+               .then((value) => {
+                                  
+                               });
+	}
+}
+</script>
