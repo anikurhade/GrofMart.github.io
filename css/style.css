@@ -105,34 +105,34 @@ html
         @keyframes slide
         {
             0%{
-                background-image: url("Images/img/Slider1.jpg");
+                background-image: url("images/img/slider1.jpg");
             }
             20%{
-                background-image: url("Images/img/Slider1.jpg");
+                background-image: url("images/img/slider1.jpg");
             }
             30%{
-                background-image: url("Images/img/Slider2.jpg");
+                background-image: url("images/img/slider2.jpg");
             }
             40%{
-                background-image: url("Images/img/Slider2.jpg");
+                background-image: url("images/img/slider2.jpg");
             }
             50%{
-                background-image: url("Images/img/Slider3.jpg");
+                background-image: url("images/img/slider3.jpg");
             }
             60%{
-                background-image: url("Images/img/Slider3.jpg");
+                background-image: url("images/img/slider3.jpg");
             }
             70%{
-                background-image: url("Images/img/Slider4.jpg");
+                background-image: url("images/img/slider4.jpg");
             }
             80%{
-                background-image: url("Images/img/Slider4.jpg");
+                background-image: url("images/img/slider4.jpg");
             }
             90%{
-                background-image: url("Images/img/Slider5.jpg");
+                background-image: url("images/img/slider5.jpg");
             }
             100%{
-                background-image: url("Images/img/Slider1.jpg");
+                background-image: url("images/img/slider5.jpg");
             }
               
         }
