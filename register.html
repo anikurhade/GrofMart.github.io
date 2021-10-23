@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" />
+    
+    <title> Register At Grofmart </title>
+   
+   
+</head>
+<body >
+    
+    <div class="container">
+        <div class="header">
+            <h1>  Register At Us      </h1>
+        </div>
+        <form class="form" id="form">
+            <div class="form-control">
+                <label >Name</label>
+                <input type="text" onchange="validate()" id="name" placeholder="Enter Your Name" autocomplete="off">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error Msg </small>
+            </div>
+            <div class="form-control">
+                <label >Email </label>
+                <input type="email" onchange="validate()" id="email" placeholder="Enter Your Email Id "autocomplete="off">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error Msg </small>
+            </div>
+           
+            <div class="form-control">
+                <label >Mobile Number</label>
+                <input type="number" onchange="validate()" id="mobnum" placeholder="Enter Your Mobile Number" autocomplete="off">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error Msg </small>
+            </div>
+            <div class="form-control">
+                <label >City</label>
+                <input type="text" onchange="validate()" id="city" placeholder="Enter Your City" autocomplete="off">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error Msg </small>
+            </div>
+            <div class="form-control">
+                <label >Username</label>
+                <input type="text" onchange="validate()" id="uname" placeholder="Enter Your UserName" autocomplete="off">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error Msg </small>
+            </div>
+            <div class="form-control">
+                <label >Password</label>
+                <input type="password" onchange="validate()" id="pass" placeholder="Enter Your Password" autocomplete="off">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error Msg </small>
+            </div>
+            <div class="form-control">
+                <label >Confirm Password</label>
+                <input type="password" onchange="validate()" id="confpass" placeholder="Confirm Your Password" autocomplete="off">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error Msg </small>
+            </div>
+            <input type="submit" value="Submit" class="btn" name="">
+            <div class="loginat">
+                <h1> Already Registered ? <a href="login.html"> Login Here </a> </h1>
+                </div>
+        </form>       
+            
+    </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        const form=document.getElementById('form');
+        const name=document.getElementById('name');
+        const city=document.getElementById('city');
+        const mobno=document.getElementById('mobnum');
+        var email=document.getElementById('email');
+        const uname=document.getElementById('uname');
+        const pass=document.getElementById('pass');
+        const cnfpass=document.getElementById('confpass');
+        
+        
+
+//add event
+if(form!=null)
+{
+    console.log("hello");
+form.addEventListener('submit',(event)=>{
+   event.preventDefault();
+   validate();   
+})
+}
+const sendData= (newreg,count,srate)=>
+{
+    if(srate==count)
+    {
+       
+        swal("Welcome!"," "+newreg[0]+" \n Registartion Successful", {
+               icon: "success",
+               })
+               .then((value) => {
+                location.href='login.html';
+                               });
+        
+    }
+    else
+    {
+        document.getElementById('name').innerHTML="";
+
+    }
+}
+ //for final validation 
+ const Successmsg=(newreg)=>
+{
+    let formCon=document.getElementsByClassName('form-control');
+    var count=formCon.length-1;
+    for(var i=0;i<formCon.length;i++)
+    
+    {
+        if(formCon[i].className=="form-control success")
+        {
+            var srate=0+i;
+            sendData(newreg,count,srate);
+            var json_str = JSON.stringify(newreg);
+            setCookie('NewReg',json_str,30);
+        }
+        else{
+            return false;
+        }
+    }
+}
+
+// more email validate 
+ const isEmail=(emailval)=>
+ {
+        emailval.indexOf('@');
+        var atSymbol=emailval.indexOf('@');
+        if(atSymbol < 1) return false;
+        var dot=parseInt(emailval.lastIndexOf('.'));
+        if(dot<= atSymbol+3) return false;
+        if(dot== emailval.length-1) return false; 
+        return true;
+ }
+//define the validate function
+const validate=() =>
+{
+const nameval=name.value.trim();
+const cityval=city.value.trim();
+const mobnoval=mobnum.value.trim();
+var emailval=email.value.trim();
+console.log(emailval);
+const unameval=uname.value.trim();
+const passval=pass.value.trim();
+const cnfpassval=confpass.value.trim();
+console.log(cityval);
+var newreg=[nameval,mobnoval,emailval,cityval,unameval,passval];
+//validate name 
+if(nameval ==" "||nameval =="")
+{
+    setErrorMsg(name,"Name Cannot Be Blank");
+}
+else
+{
+    setSuccessmsg(name);
+    console.log(nameval);
+    
+}
+//validate city 
+if(cityval ==""||cityval =="")
+{
+    setErrorMsg(city,"City Cannot Be Blank");
+}
+
+else if(cityval=='pune' || cityval=='mumbai' || cityval=='delhi'||cityval=='Pune' || cityval=='Mumbai' || cityval=='Delhi' )
+{
+    setSuccessmsg(city);
+}
+else
+{
+    setErrorMsg(city,"Sorry We Aren't Available At Your Location");
+}
+
+//validate username 
+if(unameval ==" "||unameval =="")
+{
+    setErrorMsg(uname,"Username Cannot Be Blank");
+}
+else if(unameval.length<=2)
+{
+    setErrorMsg(uname,"Username Minimum 3 Char");
+}
+else
+{
+    setSuccessmsg(uname);
+}
+//validate email 
+if(emailval =="" ||emailval=="")
+{
+    setErrorMsg(email,"Email Cannot Be Blank");
+}
+else if(!isEmail(emailval))
+{
+    setErrorMsg(email,"Not Valid Mail");
+}
+else
+{
+    setSuccessmsg(email);
+}
+//validate Phone Number
+if(mobnoval =="")
+{
+    setErrorMsg(mobno,"Mobile Number Cannot Be Blank");
+}
+else if(mobnoval.length!=10)
+{
+    setErrorMsg(mobno,"Invalid Mobile Number ");
+}
+else
+{
+    setSuccessmsg(mobno);
+}
+//validate password 
+if(passval ==" "||passval =="")
+{
+    setErrorMsg(pass,"Password Cannot Be Blank");
+}
+else if(passval.length<=5)
+{
+    setErrorMsg(pass,"Password Minimum 6 Char");
+}
+else
+{
+    setSuccessmsg(pass);
+}
+//validate confirm password 
+if(cnfpassval ==" "||cnfpassval =="")
+{
+    setErrorMsg(confpass,"Confirm Password Cannot Be Blank");
+}
+else if(cnfpassval!= passval)
+{
+    setErrorMsg(confpass,"Password Do Not Match");
+}
+else
+{
+    setSuccessmsg(confpass);
+}
+
+//validate end 
+Successmsg(newreg);
+} 
+
+// Error Message Function
+function setErrorMsg(input,errormsgs)
+{
+const formControl=input.parentElement;
+const small=formControl.querySelector('small');
+formControl.className="form-control error";
+small.innerText=errormsgs;
+}
+//Success Message 
+function setSuccessmsg(input)
+{
+    const formControl=input.parentElement;
+    formControl.className="form-control success";
+}
+    </script>
+</body>
+</html>
