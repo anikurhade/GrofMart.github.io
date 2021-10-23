@@ -1,0 +1,183 @@
+/*--------------------------Registration Page -----------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+*
+{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+:root
+{
+   --myfont: Poppins,'Times New Roman';
+   --my-btn-font:'Montserrat',sans-serif;
+   --lg-lightcolor: linear-gradient(315deg, #bbf0f3 0%, #f6d285 74%);
+   --lg-color:  linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+}
+body
+{
+    
+    background-image: url("images/test.jpg"),linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);
+    background-size: cover;
+    font-family: var(--myfont);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200vh;
+    width: 100vh;
+    
+    
+}
+.container
+{
+
+    background-color: rgba(49, 48, 48, 0.616);
+    border-radius: 10px;
+    -webkit-border-radius:10px ;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.34),0 6.7px 5.3px rgba(0, 0, 0, 0.48),0 12.px  ;
+    overflow: hidden;
+    width: calc(100vw- 65vw);
+    max-width: 100%;
+    top: 100px;
+    left: 360px;
+    position: absolute;
+
+}
+.header
+{
+    background: var(--lg-color);
+    padding: 30px 0;
+    width: 700px;
+}
+.header h1
+{
+    color: #222222;
+    font-family: var(--my-btn-font);
+    font-size: 24px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.form
+{
+    padding: 40px;
+}
+
+.form-control
+{
+    margin-bottom: 30px;
+    position: relative;
+
+}
+.form-control label
+{
+    display: inline-block;
+    margin-bottom: 5px; 
+    font-size: large;
+    color: white;
+
+}
+.form-control input{
+    width: 100%;
+    border: 2px solid #f0f0f0;
+    display: block;
+    font-family: var(--myfont);
+    font-size: 14px;
+    padding: 12px;
+   color: #222222;
+}
+.form-control :focus
+{
+    outline: 0;
+    border: #777;
+   
+    
+}
+
+.form-control.success input
+{
+    border-color:#2ecc71 ;
+}
+.form-control.error input
+{
+    border-color:#e74c3c ;
+}
+.form-control i
+{
+    position: absolute;
+    right: 12px;
+    top:50px;
+    visibility: hidden;
+}
+.form-control.success i.fa-check-circle{
+    color: #2ecc71;
+    visibility: visible;
+}
+.form-control.error i.fa-exclamation-circle{
+    color: #e74c3c;
+    visibility: visible;
+}
+.form-control small{
+    color: #e74c3c;
+    position: absolute;
+    left: 0;
+    font-size: medium;
+    visibility: hidden;
+}
+.form-control.error  small{
+    
+    visibility: visible;
+}
+
+.form .btn
+{
+    background: var(--lg-color);
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    display: block;
+    font-family: var(--my-btn-font);
+    font-size: 16px;
+    padding: 15px 0;
+    margin-top: 20px;
+    width: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 1s ease;
+
+}
+.form .btn:hover
+{
+    background:  linear-gradient(315deg, #8989bb 0%, #a5a4cb 74%);
+}
+.loginat h1
+{
+    font-size: 18px;
+    font-family: "Poppins";
+    color: #f0f0f0;
+    position: relative;
+    left: 170px;
+}
+    .loginat a
+{
+    font-size: 18px;
+    font-family: "Poppins";
+    color: #f0f0f0;
+
+}
+ @media(max-width:998px)
+ {
+     .container
+     {
+         width: calc(100vw-35vw);
+         width: 100%;
+         left: 0px;
+         top: 30px;
+         position: absolute;
+     }
+     .header
+    {
+        width: 400px;
+    }
+ }
