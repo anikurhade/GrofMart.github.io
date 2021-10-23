@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Login</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/login.css">  
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" />
+      
+    </head>
+  
+        <body>
+          
+            <div class="container">
+                <div class="header">
+                    <h1>  Login  Here   </h1>
+                </div>
+                <form class="form" id="form" >
+                    <div class="form-control">
+                        <label >Username</label>
+                        <input type="text" onchange="validate()" id="uname" placeholder="Enter Your UserName" autocomplete="off">
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>Error Msg </small>
+                    </div>
+                    <div class="form-control">
+                        <label >Password</label>
+                        <input type="password" onchange="validate()" id="passw" placeholder="Enter Your Password" autocomplete="off">
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>Error Msg </small>
+                    </div>
+                    <input type="submit" value="Login" class="btn" name="">
+                    <br>
+                    <div class="loginat">
+                    <h1> Not Registered ? <a href="register.html"> Register Here </a> </h1>
+                    </div>
+                </form> 
+            </div>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+             <script src="js/script.js"></script>
+            <script>
+                const uname=document.getElementById('uname');
+                const passw=document.getElementById('passw');
+                    
+                    if(form!=null)
+                        {
+                        
+                        form.addEventListener('submit',(event)=>{
+                        event.preventDefault();
+                        validate();   
+                        })
+                    }
+                     //define the validate function
+                    const validate=() =>
+                    {   
+                        
+                        var json_str = getCookie("NewReg");
+                            var arr = JSON.parse(json_str);
+                            uid=arr[4];
+                            pass=arr[5];
+                            console.log(uid);
+                            console.log(pass);
+                            const unameval=uname.value.trim();
+                            const passval=passw.value.trim();
+                            //validate username 
+                        if(unameval ==" "||unameval =="")
+                        {
+                            setErrorMsg(uname,"Username Cannot Be Blank");
+                        }
+                        
+                        else if(unameval==uid)
+                        {
+                            setSuccessmsg(uname);
+                        }
+                        else
+                        {
+                            setErrorMsg(uname,"Username Not Found Or Incorrect");
+                        }
+                        if(passval ==" "||passval =="")
+                        {
+                            setErrorMsg(passw,"Password Cannot Be Blank");
+                        }
+                        else if(passval==pass)
+                        {
+                            setSuccessmsg(passw);
+                            swal("Welcome!"," "+arr[0]+" \n Login Successful", "success")
+                                .then((value) => {
+                                    location.href='product2.html';
+                                });
+                        }
+                        else
+                        {
+                            setErrorMsg(passw,"Incorrect Password");
+                        }
+                    }   
+                        // Error Message Function
+                        function setErrorMsg(input,errormsgs)
+                        {
+                        const formControl=input.parentElement;
+                        const small=formControl.querySelector('small');
+                        formControl.className="form-control error";
+                        small.innerText=errormsgs;
+                        }
+                        //Success Message 
+                        function setSuccessmsg(input)
+                        {
+                            const formControl=input.parentElement;
+                            formControl.className="form-control success";
+                        }
+             </script>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
+
+        </body>
+        </html>
+   
+
